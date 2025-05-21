@@ -1,34 +1,49 @@
-# Java Object Diff & Patch Utility
+# Java Object Diff
 
-Minimal, dependency-free utility to compute the diff and patch between two Java objects.
+This project provides a utility for comparing Java objects and identifying differences between them. It is intended as a foundation for building robust object comparison features, such as those needed for testing, auditing, or data synchronization.
 
 ## Features
 
-- Compute field-level differences between two POJOs.
-- Generate a summary of changes.
-- Apply a patch to an existing object.
+- Compare Java objects and detect differences
+- Designed for extensibility and easy integration
+- Pure Java implementation with no external dependencies
+
+## Getting Started
+
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/miroslawhrynacz/java-object-diff.git
+   cd java-object-diff
+   ```
+
+2. Build the project using your preferred build tool (e.g., Maven or Gradle).
+
+3. Integrate the object diff utility into your Java project.
 
 ## Usage Example
 
 ```java
-Person oldPerson = new Person("Alice", 30);
-Person newPerson = new Person("Alice", 31);
+// Example usage (pseudo-code)
+MyObject obj1 = new MyObject(...);
+MyObject obj2 = new MyObject(...);
+ObjectDiff diff = new ObjectDiff();
+DiffResult result = diff.compare(obj1, obj2);
 
-DiffResult diff = ObjectDiffer.diff(oldPerson, newPerson);
-System.out.println(diff.toSummary()); // e.g. "MODIFIED: age changed from 30 to 31"
-
-Patch patch = diff.toPatch();
-patch.applyTo(oldPerson); // oldPerson.age is now 31
+if (result.isEmpty()) {
+    System.out.println("Objects are identical.");
+} else {
+    System.out.println("Differences found: " + result);
+}
 ```
 
-## Testing
+## Contributing
 
-Run tests with:
-
-```bash
-./gradlew test
-```
+This project is **Copilot-driven**. Contributions, suggestions, and improvements are welcome! If you have ideas or find bugs, feel free to open an issue or submit a pull request.
 
 ## License
 
-MIT
+This project is licensed under the MIT License.
+
+---
+
+> _Note: This repository was initiated and primarily developed using GitHub Copilot and Copilot Chat. The codebase and documentation may reflect AI-driven development patterns._
